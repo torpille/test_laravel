@@ -1,0 +1,22 @@
+body {
+    background: whitesmoke;
+    color: black;
+    max-width: 600px;
+    margin: auto;
+    font-family: sans-serif;
+
+}
+p {line-height: 1.7
+}
+
+/*article {*/
+/*    background: white;*/
+/*    border-radius: 15px;*/
+/*    padding: 20px;*/
+
+/*}*/
+
+article + article {
+    border-top: 1px solid darkslategray;
+    margin-top: 10px;
+}
