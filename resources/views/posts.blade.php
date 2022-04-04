@@ -5,10 +5,10 @@
             <a href="/posts/{{ $post->slug}} ">
                 <h1> {{$post->title}} </h1>
             </a>
-            <p>{{ $post->excerpt }}</p>
-            <a href="#">
+            {{ $post->excerpt }}
+            <p><a href="/categories/{{$post->category->slug}}">
                 {{$post->category->name}}
-            </a>
+            </a></p>
 
         </article>
 
