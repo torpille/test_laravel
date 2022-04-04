@@ -5,7 +5,12 @@
             <a href="/posts/{{ $post->slug}} ">
                 <h1> {{$post->title}} </h1>
             </a>
-            {{ $post->excerpt }}
+            <p>{{ $post->excerpt }}</p>
+            <a href="#">
+                {{$post->category->name}}
+            </a>
+
         </article>
+
         @endforeach
     @endsection
