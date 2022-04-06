@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -16,19 +17,28 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('posts', ['posts' =>  Post::latest('created_at')->get()]);
+    return view('posts', [
+        'posts' =>  Post::latest('created_at')->get(),
+        'categories'=> Category::all()]);
 });
 
 Route::get('/posts/{post:slug}', function (Post $post) {
 //    find a post by its slug and pass it to a view called "post"
-    return view('post', ['post'=> $post]);
+    return view('post', [
+        'post'=> $post,
+        'categories'=> Category::all()]);
 
 });
 
-Route::get('/categories/{category:slug}', function (\App\Models\Category $category) {
-    return view('posts', ['posts' =>  $category->posts]);
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('posts', [
+        'posts' =>  $category->posts,
+        'currentCategory' => $category,
+        'categories'=> Category::all()]);
 });
 
 Route::get('/authors/{author:username}', function (\App\Models\User $author) {
-    return view('posts', ['posts' =>  $author->posts]);
+    return view('posts', [
+        'posts' =>  $author->posts,
+        'categories'=> Category::all()]);
 });
