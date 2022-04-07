@@ -20,7 +20,7 @@ Route::get('/', function () {
     return view('posts', [
         'posts' =>  Post::latest('created_at')->get(),
         'categories'=> Category::all()]);
-});
+})->name('home');
 
 Route::get('/posts/{post:slug}', function (Post $post) {
 //    find a post by its slug and pass it to a view called "post"
