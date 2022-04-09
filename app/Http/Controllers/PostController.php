@@ -11,13 +11,13 @@ class PostController extends Controller
     public function index() {
         $posts = Post::latest('created_at');
 
-        return view('posts', [
+        return view('posts.index', [
             'posts' =>  $posts->filter(request(['search']))->get(),
         ]);
     }
 
     public function retrieve(Post $post) {
-        return view('post', [
+        return view('posts.retrieve', [
             'post'=> $post
         ]);
     }
