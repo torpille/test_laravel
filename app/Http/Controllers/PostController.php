@@ -12,7 +12,7 @@ class PostController extends Controller
         $posts = Post::latest('created_at');
 
         return view('posts.index', [
-            'posts' =>  $posts->filter(request(['search', 'category', 'author']))->get(),
+            'posts' =>  $posts->filter(request(['search', 'category', 'author']))->paginate(3)->withQueryString(),
         ]);
     }
 
