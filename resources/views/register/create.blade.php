@@ -12,7 +12,11 @@
                    type="text"
                    name="username"
                    id="username"
+                   value="{{old('username')}}"
                    required>
+                @error('username')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="m-5">
@@ -24,6 +28,9 @@
                    name="password"
                    id="password"
                    required>
+                @error('password')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="m-5">
@@ -34,7 +41,11 @@
                    type="text"
                    name="name"
                    id="name"
+                   value="{{old('name')}}"
                    required>
+                @error('name')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="m-5">
@@ -46,6 +57,9 @@
                    name="email"
                    id="email"
                    required>
+                @error('email')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+                @enderror
             </div>
 
             <div class="m-5">
