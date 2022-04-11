@@ -53,6 +53,7 @@
                 </form>
             </div>
         </div>
+        <x-flash></x-flash>
     </footer>
 </section>
 </body>
