@@ -62,6 +62,10 @@
                 @enderror
             </div>
 
+            @foreach($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+
             <div class="m-5">
                <button type="submit"
                        class="bg-blue-400 rounded margin-5 p-2 text-white font-bold hover:bg-blue-500"
