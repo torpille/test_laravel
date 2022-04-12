@@ -48,6 +48,9 @@
                     </div>
                 </div>
             </article>
+            @auth
+                <x-comment-form/>
+            @endauth
             @foreach($post->comments as $comment)
                 <x-post-comment :comment="$comment"/>
             @endforeach
