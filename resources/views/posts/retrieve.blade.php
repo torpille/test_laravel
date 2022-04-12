@@ -48,6 +48,12 @@
                     </div>
                 </div>
             </article>
+
+            <x-post-comment/>
+            <x-post-comment/>
+            <x-post-comment/>
+            <x-post-comment/>
+
         </main>
 {{--        <article>--}}
 {{--            <h1> {{ $post->title}} </h1>--}}
