@@ -21,10 +21,11 @@ class SessionController extends Controller
             'username' => 'required|exists:users,username',
             'password' => 'required|',
             ]);
-        if (auth()->attempt($attributes)) {
-            return redirect('/')->with('success', 'Welcome back!');
+        if ( ! auth()->attempt($attributes)) {
+            throw ValidationException::withMessages(['password' => 'Wrong password. Try again']);
         }
-        throw ValidationException::withMessages(['password' => 'Wrong password. Try again']);
+        session()->regenerate();
+        return redirect('/')->with('success', 'Welcome back!');
     }
 
 }
