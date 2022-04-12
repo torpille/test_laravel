@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
@@ -23,7 +24,7 @@ class SessionController extends Controller
         if (auth()->attempt($attributes)) {
             return redirect('/')->with('success', 'Welcome back!');
         }
-        return back()->withInput()->withErrors(['password' => 'Wrong password. Try again']);
+        throw ValidationException::withMessages(['password' => 'Wrong password. Try again']);
     }
 
 }
