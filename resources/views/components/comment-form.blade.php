@@ -1,5 +1,6 @@
+@props(['post'])
 <x-card>
-    <form method="POST" action="/comment">
+    <form method="POST" action="/posts/{{$post->slug}}/comments">
         @csrf
         <h1 class=" font-bold lg:text-center">Add comment</h1>
         <div class="m-5">

@@ -49,7 +49,7 @@
                 </div>
             </article>
             @auth
-                <x-comment-form/>
+                <x-comment-form :post="$post"/>
             @endauth
             @foreach($post->comments as $comment)
                 <x-post-comment :comment="$comment"/>
