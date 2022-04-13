@@ -1,4 +1,4 @@
-<div class="max-w-500 mt-10 m-5 p-5  rounded-xl border border-gray-300 ">
+<x-card>
     <form method="POST" action="/comment">
         @csrf
         <h1 class=" font-bold lg:text-center">Add comment</h1>
@@ -21,4 +21,4 @@
             >Send</button>
         </div>
     </form>
-</div>
+</x-card>
