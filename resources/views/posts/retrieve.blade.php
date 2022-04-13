@@ -50,6 +50,12 @@
             </article>
             @auth
                 <x-comment-form :post="$post"/>
+            @else
+                <p class="text-s font-bold">To add comment
+                    <a href="/login" class="hover:underline">log in</a>
+                    or
+                    <a href="/register" class="hover:underline">register</a>
+                </p>
             @endauth
             @foreach($post->comments as $comment)
                 <x-post-comment :comment="$comment"/>
