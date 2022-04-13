@@ -6,7 +6,7 @@
     </div>
     <article class="px-6">
         <h3 class="font-bold">{{$comment->author->name}}</h3>
-        <p class="text-xs font-bold"><time>{{$comment->created_at->diffForHumans()}}</time></p>
+        <p class="text-xs font-bold"><time>{{$comment->created_at->format('Y-m-d h:i')}}</time></p>
         <p>{{$comment->body}}</p>
     </article>
 </x-card>>
