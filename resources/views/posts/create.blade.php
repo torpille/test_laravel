@@ -2,7 +2,7 @@
 
 @section('content')
 <x-card>
-    <form method="POST" action="/posts/{{$post->slug}}/comments">
+    <form method="POST" action="admin/posts/create">
         @csrf
         <h1 class=" font-bold lg:text-center">Add post</h1>
         <div class="m-5">
