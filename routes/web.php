@@ -21,3 +21,4 @@ Route::get('/login', [SessionController::class, 'create'])->name('login')->middl
 Route::post('/login', [SessionController::class, 'store'])->name('loginStore')->middleware('guest');
 
 Route::get('admin/posts/create', [PostController::class, 'create'])->name('createPost')->middleware('admin');
+Route::post('admin/posts/', [PostController::class, 'store'])->name('storePost')->middleware('admin');
