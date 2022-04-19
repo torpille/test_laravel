@@ -3,7 +3,7 @@
 
 @section('content')
 <x-card class="max-w-sm" >
-    <form method="POST" action="/admin/posts">
+    <form method="POST" action="/admin/posts" enctype="multipart/form-data">
         @csrf
         <h1 class=" font-bold lg:text-center">Add post</h1>
         <div class="m-5">
@@ -81,6 +81,15 @@
             </select>
             @error('category_id')
             <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+            @enderror
+        </div>
+        <input class="border border-gray-300 p-2 w-full"
+               type="file"
+               name="thumbnail"
+               id="thumbnail"/>
+
+                @error('thumbnail')
+                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
             @enderror
         </div>
         <div class="m-5 flex justify-end" >
