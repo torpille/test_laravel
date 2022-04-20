@@ -22,7 +22,7 @@ class AdminPostController extends Controller
     }
 
     public function store() {
-        $attrs = $this->validatePost(new Post());
+        $attrs = $this->validatePost();
         $attrs['user_id'] = auth()->id();
         $attrs['thumbnail'] = request()->file('thumbnail')->store('thumbnails', ['disk'=>'public']);
         $post = Post::create($attrs);
@@ -48,7 +48,8 @@ class AdminPostController extends Controller
         return back(204)->with('success', 'Post has been deleted');
     }
 
-    private function validatePost(Post $post) {
+    private function validatePost(Post $post = null) {
+        $post = $post ??= new Post();
         return request()->validate([
             "title"=>[ 'max:255', 'min:2'],
             "body"=>['required'],
