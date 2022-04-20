@@ -56,4 +56,9 @@ class AdminPostController extends Controller
         $path = join(['/posts/', $post->slug]);
         return redirect($path)->with('success', 'Post has been created');
     }
+
+    public function destroy(Post $post) {
+        $post->delete();
+        return back(204)->with('success', 'Post has been deleted');
+    }
 }
