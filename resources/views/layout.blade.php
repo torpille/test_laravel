@@ -20,13 +20,26 @@
             <a href="/register" class="text-xs font-bold uppercase">Register</a>
                 <a href="/login" class="text-xs font-bold uppercase">Log in</a>
         @else
-            <div class="text-xs font-bold p-2 m-5"><p>Welcome, {{auth()->user()->name}}</p></div>
-            <form method="POST" action="/logout">
-                @csrf
-                <button type="submit"
-                        class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5"
-                >Log out</button>
-            </form>
+            <x-dropdown>
+                <div>
+            <x-slot name="trigger" >
+                <button class="text-xs font-bold p-2 m-5"><p>Welcome, {{auth()->user()->name}}</p></button>
+            </x-slot>
+                <x-dropdown-item href="/admin/posts/create" >Dashboard </x-dropdown-item>
+                <x-dropdown-item href="/admin/posts/create" :active="request()->is('/admin/posts/create')">Create a new post </x-dropdown-item>
+
+                <x-dropdown-item href="#"
+                                 x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()"
+                >Log out
+                </x-dropdown-item>
+
+                    <form method="POST" action="/logout" class="hidden" id="logout-form">
+                        @csrf
+                        <button type="submit">Log out</button>
+                    </form>
+                </div>
+            </x-dropdown>
+
         @endguest
         </div>
 

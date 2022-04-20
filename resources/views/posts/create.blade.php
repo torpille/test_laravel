@@ -1,8 +1,4 @@
-
-@extends('layout')
-
-@section('content')
-<x-card class="max-w-sm" >
+<x-setting name="New Post">
     <form method="POST" action="/admin/posts" enctype="multipart/form-data">
         @csrf
         <h1 class=" font-bold lg:text-center">Add post</h1>
@@ -28,5 +24,6 @@
         <x-form.input name="thumbnail" type="file"/>
         <x-form.button>Submit</x-form.button>
     </form>
-</x-card>
-@endsection
+</x-setting>
+
+
