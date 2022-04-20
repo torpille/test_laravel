@@ -6,6 +6,8 @@
            name="{{$name}}"
            id="{{$name}}"
            value="{{old($name)}}"
-           required>
+           required
+           {{$attributes}}
+    >
     <x-form._error name=$name />
 </x-form._field>
