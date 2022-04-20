@@ -1,44 +1,12 @@
 @extends('layout')
 @section('content')
-    <main class="max-w-lg mx-auto bg-gray-100 mt-10 rounded-xl border border-gray-300 p-5">
+    <x-card>
         <form method="POST" action="/login">
             @csrf
             <h1 class="text-xl font-bold lg:text-center">Log in</h1>
-            <div class="m-5">
-                <label class="block mb-2 font-bold text-xs text-gray-700" for="username">
-                    Username
-                </label>
-                <input class="border border-gray-300 p-2 w-full"
-                       type="text"
-                       name="username"
-                       id="username"
-                       value="{{old('username')}}"
-                       required>
-                @error('username')
-                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                @enderror
-            </div>
-
-            <div class="m-5">
-                <label class="block mb-2 font-bold text-xs text-gray-700" for="password">
-                    Password
-                </label>
-                <input class="border border-gray-300 p-2 w-full"
-                       type="text"
-                       name="password"
-                       id="password"
-                       required>
-                @error('password')
-                <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                @enderror
-            </div>
-
-
-            <div class="m-5">
-                <button type="submit"
-                        class="bg-blue-400 rounded margin-5 p-2 text-white font-bold hover:bg-blue-500"
-                >Submit</button>
-            </div>
+            <x-form.input name="email" type="email" autocomplete="username"/>
+            <x-form.input name="password" autocomplete="current-password"/>
+            <x-form.button>Submit</x-form.button>
         </form>
-    </main>
+    </x-card>
 @endsection
