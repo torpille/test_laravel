@@ -22,10 +22,5 @@ Route::get('/login', [SessionController::class, 'create'])->name('login')->middl
 Route::post('/login', [SessionController::class, 'store'])->name('loginStore')->middleware('guest');
 
 Route::middleware('can:admin')->group(function () {
-    Route::get('admin/posts/create', [AdminPostController::class, 'create'])->name('createPost');
-    Route::post('admin/posts/', [AdminPostController::class, 'store'])->name('storePost');
-    Route::get('admin/posts/', [AdminPostController::class, 'index'])->name('adminPosts');
-    Route::get('admin/posts/{post:id}/edit', [AdminPostController::class, 'edit'])->name('adminPostEdit');
-    Route::patch('admin/posts/{post:id}', [AdminPostController::class, 'update'])->name('adminPostUpdate');
-    Route::delete('admin/posts/{post:id}', [AdminPostController::class, 'destroy'])->name('adminPostDelete');
+    Route::resource('admin/posts', AdminPostController::class)->except('show');
 });
