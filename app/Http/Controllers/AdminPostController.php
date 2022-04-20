@@ -36,4 +36,8 @@ class AdminPostController extends Controller
         $path = join(['/posts/', $post->slug]);
         return redirect($path)->with('success', 'Post has been created');
     }
+
+    public function edit(Post $post) {
+        return view('admin.posts.edit', ['post'=>$post]);
+    }
 }

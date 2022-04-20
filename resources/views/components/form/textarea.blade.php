@@ -8,7 +8,7 @@
         class="w-full p-5 focus:outline-none focus:ring  border border-gray-300"
         cols="20"
         rows="5"
-        required>{{old($name)}}
+        required>{{$slot ?? old($name)}}
             </textarea>
     <x-form._error name=$name />
 </x-form._field>
