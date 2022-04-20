@@ -22,14 +22,7 @@ class AdminPostController extends Controller
     }
 
     public function store() {
-        $attrs = request()->validate([
-            "title"=>['required', 'max:255', 'min:2'],
-            "body"=>['required'],
-            "excerpt"=>['required'],
-            "thumbnail"=>['image'],
-            "slug"=>['required', Rule::unique('posts', 'slug')],
-            "category_id"=>['required', Rule::exists('categories', 'id')],
-        ]);
+        $attrs = $this->validatePost(new Post());
         $attrs['user_id'] = auth()->id();
         $attrs['thumbnail'] = request()->file('thumbnail')->store('thumbnails', ['disk'=>'public']);
         $post = Post::create($attrs);
@@ -42,14 +35,7 @@ class AdminPostController extends Controller
     }
 
     public function update(Post $post) {
-        $attrs = request()->validate([
-            "title"=>[ 'max:255', 'min:2'],
-            "body"=>['required'],
-            "excerpt"=>['required'],
-            "thumbnail"=>['image'],
-            "slug"=>['required', Rule::unique('posts', 'slug')->ignore($post->id)],
-            "category_id"=>['required', Rule::exists('categories', 'id')],
-        ]);
+        $attrs = $this->validatePost($post);
         if (request()->file('thumbnail')) {
             $attrs['thumbnail'] = request()->file('thumbnail')->store('thumbnails', ['disk'=>'public']);}
         $post->update($attrs);
@@ -60,5 +46,17 @@ class AdminPostController extends Controller
     public function destroy(Post $post) {
         $post->delete();
         return back(204)->with('success', 'Post has been deleted');
+    }
+
+    private function validatePost(Post $post) {
+        return request()->validate([
+            "title"=>[ 'max:255', 'min:2'],
+            "body"=>['required'],
+            "excerpt"=>['required'],
+            "thumbnail"=>['image'],
+            "slug"=>['required', Rule::unique('posts', 'slug')->ignore($post->id)],
+            "category_id"=>['required', Rule::exists('categories', 'id')],
+        ]);
+
     }
 }
