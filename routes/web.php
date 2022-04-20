@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
@@ -20,5 +21,6 @@ Route::post('/logout', [SessionController::class, 'destroy'])->name('logout')->m
 Route::get('/login', [SessionController::class, 'create'])->name('login')->middleware('guest');
 Route::post('/login', [SessionController::class, 'store'])->name('loginStore')->middleware('guest');
 
-Route::get('admin/posts/create', [PostController::class, 'create'])->name('createPost')->middleware('admin');
-Route::post('admin/posts/', [PostController::class, 'store'])->name('storePost')->middleware('admin');
+Route::get('admin/posts/create', [AdminPostController::class, 'create'])->name('createPost')->middleware('admin');
+Route::post('admin/posts/', [AdminPostController::class, 'store'])->name('storePost')->middleware('admin');
+Route::get('admin/posts/', [AdminPostController::class, 'index'])->name('adminPosts');
